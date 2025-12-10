@@ -1,0 +1,11 @@
+  	.sidebar {
+  	  background-image: linear-gradient(to right, rgb(169, 169, 169), rgb(239, 255, 255));
+  	}
+
+  	.brand-link {
+  	  background-image: linear-gradient(to right, rgb(169, 169, 169), rgb(239, 255, 255));
+  	}
+
+  	.main-sidebar {
+  	  font-weight: 500;
+  	}

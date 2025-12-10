@@ -1,0 +1,9 @@
+staterkit ini berjalan diatas php versi 7.4
+
+untuk melakukan instalasi ikuti langkah berikut 
+
+1. silahkan copy folder ci3_staterkit ini kedalam webserver anda
+2. buatlah sebuah database melalui phpmyadmin atau sejenisnya
+3. sesuaikan configurasi databasenya pada folder application/config/database.php
+4. import file database master_project_ci3.sql yang ada di folder project ini
+5. login default yang bisa di gunakan adalah admin@gmail.com dengan password admin 
