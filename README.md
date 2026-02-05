@@ -60,7 +60,7 @@ Whether you are building a simple administration panel or a complex enterprise a
 *   **Framework**: CodeIgniter 3.x
 *   **Language**: PHP 7.4+ (Compatible with 5.6+)
 *   **Database**: MySQL / MariaDB
-*   **Frontend**: Bootstrap 4, AdminLTE 3, jQuery
+*   **Frontend**: Bootstrap 4, Inspinia Template, jQuery
 *   **Libraries**: DomPDF (Export PDF), PhpSpreadsheet (Export Excel), Chart.js
 
 ## 🚀 Installation
