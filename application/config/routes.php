@@ -49,6 +49,19 @@ defined('BASEPATH') or exit('No direct script access allowed');
 | Examples:	my-controller/index	-> my_controller/index
 |		my-controller/my-method	-> my_controller/my_method
 */
-$route['default_controller'] = 'auth';
+
+// Check if application is installed
+$installed = file_exists(APPPATH . 'config/installed.lock');
+
+if (!$installed) {
+    $route['default_controller'] = 'install';
+} else {
+    $route['default_controller'] = 'auth';
+}
+
+$route['superadmin/chart_generator'] = 'chart_generator';
+$route['superadmin/chart_generator/(:any)'] = 'chart_generator/$1';
+$route['superadmin/chart_generator/(:any)/(:any)'] = 'chart_generator/$1/$2';
+
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

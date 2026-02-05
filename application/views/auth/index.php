@@ -9,21 +9,55 @@
     <link href="<?php echo base_url('assets/'); ?>template/css/bootstrap.min.css" rel="stylesheet">
     <link href="<?php echo base_url('assets/'); ?>template/font-awesome/css/font-awesome.css" rel="stylesheet">
 
+    <?php 
+        $favicon = isset($identitas->title_icon) && !empty($identitas->title_icon) ? base_url('assets/images/' . $identitas->title_icon) : base_url('assets/images/default-icon.png');
+    ?>
+    <link rel="shortcut icon" href="<?php echo $favicon; ?>">
+
     <link href="<?php echo base_url('assets/'); ?>template/css/animate.css" rel="stylesheet">
     <link href="<?php echo base_url('assets/'); ?>template/css/style.css" rel="stylesheet">
     <link href="<?php echo base_url('assets/'); ?>template/css/plugins/sweetalert/sweetalert.css" rel="stylesheet">
 
 
 </head>
-<!-- <style>
-	.bg {
-		background: url("<?php echo base_url('assets/dist/'); ?>img/payroll.png") no-repeat center center fixed;
-		-webkit-background-size: cover;
-		-moz-background-size: cover;
-		-o-background-size: cover;
-		background-size: cover;
-	}
-</style> -->
+<style>
+    /* Responsive Login Layout */
+    body.gray-bg {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        margin: 0;
+        padding: 20px;
+    }
+
+    .middle-box {
+        margin: 0 !important;
+        padding: 0 !important;
+        width: 100%;
+        max-width: 400px;
+        float: none !important; /* Override float if exists */
+    }
+
+    .ibox-content {
+        border-radius: 12px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        border: none;
+        background: #fff;
+    }
+
+    /* Logo scaling */
+    .img-circle {
+        width: 120px !important;
+        height: 120px !important;
+    }
+    
+    @media (max-width: 480px) {
+        .logo-name {
+            font-size: 60px;
+        }
+    }
+</style>
 
 
 <body class="gray-bg">
@@ -33,34 +67,46 @@
 
     <div class="middle-box text-center loginscreen animated fadeInDown">
         <div>
-            <div>
-
-                <h1 class="logo-name"><img src="<?php echo base_url('assets/dist/aplikasi/') . $identitas->logo; ?>" alt="AdoniaLogo" class="brand-image img-circle elevation-3" style="height:200px"></h1>
-
+            <div class="text-center mb-4">
+                <?php if (!empty($identitas->logo)): ?>
+                    <img src="<?php echo base_url('assets/images/') . $identitas->logo; ?>" 
+                         alt="<?php echo $identitas->nama_aplikasi; ?> Logo" 
+                         class="img-circle elevation-3" 
+                         style="height:150px; width:150px; object-fit:contain; background: white; padding: 10px; border: 3px solid #1ab394;">
+                <?php else: ?>
+                    <h1 class="logo-name" style="color:#1ab394;">IN+</h1>
+                <?php endif; ?>
             </div>
-            <div class="ibox-content">
-            <h5>Welcome to</h5><br>
-            <h3> <?= $identitas->nama_aplikasi ?></h3>
-             <div class="flash-data" data-flashdata="<?= $this->session->flashdata('message'); ?>"></div>
-             <?php echo $this->session->flashdata('msg'); ?>
-           <!--  <p>Login in. To see it in action.</p> -->
-            <form class="m-t" role="form" action="<?php echo base_url('auth/index'); ?>" method="post">
-                <div class="form-group">
-                	<?php echo form_error('email', '<small class="text-danger pl-1">', '</small>'); ?>
-                    <input type="email" class="form-control" name="email" placeholder="Alamat Email" required="">
-                </div>
-                <div class="form-group">
-                	<?php echo form_error('password', '<small class="text-danger pl-1">', '</small>'); ?>
-                    <input type="password" class="form-control" name="password" placeholder="Password" required="">
-                </div>
-                <button type="submit" class="btn btn-primary block full-width m-b"><i class="fa fa-sign-in"></i> Login</button>
+            
+            <div class="ibox-content" style="padding: 30px;">
+                <h5>Welcome to</h5>
+                <h3 style="color:#1ab394; margin-bottom:20px;"><?= $identitas->nama_aplikasi ?></h3>
+                
+                <div class="flash-data" data-flashdata="<?= $this->session->flashdata('message'); ?>"></div>
+                <?php echo $this->session->flashdata('msg'); ?>
+                
+                <?php echo form_open('auth/index', ['class' => 'm-t', 'role' => 'form']); ?>
+                    <div class="form-group">
+                        <?php echo form_error('email', '<small class="text-danger pl-1">', '</small>'); ?>
+                        <input type="email" class="form-control" name="email" placeholder="Email Address" required="">
+                    </div>
+                    <div class="form-group">
+                        <?php echo form_error('password', '<small class="text-danger pl-1">', '</small>'); ?>
+                        <input type="password" class="form-control" name="password" placeholder="Password" required="">
+                    </div>
+                    <button type="submit" class="btn btn-primary block full-width m-b">
+                        <i class="fa fa-sign-in"></i> Login
+                    </button>
 
-                <a class="btn btn-sm btn-white btn-block" href="<?php echo base_url('Auth/reset')?>"><small><i class="fa fa-lock"></i> Forgot password?</small></a>
-               <!--  <p class="text-muted text-center"><small>Do not have an account?</small></p>
-                <a class="btn btn-sm btn-white btn-block" href="register.html">Create an account</a> -->
-            </form>
-            <!-- <p class="m-t"> <small>Inspinia we app framework base on Bootstrap 3 &copy; 2014</small> </p> -->
-             </div>
+                    <a class="btn btn-sm btn-white btn-block" href="<?php echo base_url('Auth/reset')?>">
+                        <small><i class="fa fa-lock"></i> Forgot password?</small>
+                    </a>
+                </form>
+                
+                <p class="text-muted text-center mt-3">
+                    <small>Powered by RBAC System</small>
+                </p>
+            </div>
         </div>
     </div>
 
@@ -68,75 +114,58 @@
     <script src="<?php echo base_url('assets/'); ?>template/js/jquery-3.1.1.min.js"></script>
     <script src="<?php echo base_url('assets/'); ?>template/js/popper.min.js"></script>
     <script src="<?php echo base_url('assets/'); ?>template/js/bootstrap.js"></script>
-    <script src="<?php echo base_url('assets/'); ?>template/js/plugins/sweetalert/sweetalert.min.js"></script>
+    <!-- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 
 <script>
 
     $(document).ready(function () {
 
-        // $('#tombol-logout').click(function(){
-        //     swal({
-        //         title: "Welcome in Alerts",
-        //         text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
-        //     });
-        // });
-
-        // $('.demo2').click(function(){
-        //     swal({
-        //         title: "Good job!",
-        //         text: "You clicked the button!",
-        //         type: "success"
-        //     });
-        // });
-
         $('.logout').click(function () {
-            swal({
+            Swal.fire({
                 title: "Konfirmasi Logout",
                 text: "Klik keluar untuk mengakhiri session!",
-                type: "warning",
+                icon: "warning",
                 showCancelButton: true,
-                confirmButtonColor: "#DD6B55",
+                confirmButtonColor: "#d33",
+                cancelButtonColor: "#6c757d",
                 confirmButtonText: "Keluar",
-                closeOnConfirm: false
-            }, function () {
-                document.location.href = '<?=base_url('auth/logout'); ?>';
+                cancelButtonText: "Batal"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    document.location.href = '<?=base_url('auth/logout'); ?>';
+                }
             });
-            
         });
 
         
         $('.backup').click(function () {
-            swal({
+            Swal.fire({
                 title: "Konfirmasi Backup",
                 text: "Klik Backup Untuk Export Database!",
-                type: "warning",
+                icon: "warning",
                 showCancelButton: true,
-                confirmButtonColor: "#DD6B55",
+                confirmButtonColor: "#d33",
+                cancelButtonColor: "#6c757d",
                 confirmButtonText: "Backup",
-                closeOnConfirm: false
-            }, function () {
-                document.location.href = '<?= base_url('admin/backup_database'); ?>';
-                swal("Success!", "Your Data has been Backup.", "success");
+                cancelButtonText: "Batal"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    document.location.href = '<?= base_url('admin/backup_database'); ?>';
+                    Swal.fire("Success!", "Your Data has been Backup.", "success");
+                }
             });
-            
         });
 
         const flashData = $('.flash-data').data('flashdata');
         if (flashData) {
-            swal({
+            Swal.fire({
                 title: flashData + ' Sukses',
                 text: "",
-                type: 'success'
+                icon: 'success'
             });
         }
-
-
-
-
- 
- 
-
 
     });
 

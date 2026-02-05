@@ -58,7 +58,10 @@ $autoload['packages'] = array();
 |
 |	$autoload['libraries'] = array('user_agent' => 'ua');
 */
-$autoload['libraries'] = array('database', 'session', 'form_validation');
+// Don't autoload database - will be loaded manually in controllers after installation check
+// Don't autoload session - it's loaded via Session wrapper to fix load_class() issue
+// Don't autoload form_validation - it depends on session and other libraries
+$autoload['libraries'] = array();
 
 /*
 | -------------------------------------------------------------------
@@ -89,7 +92,7 @@ $autoload['drivers'] = array();
 |
 |	$autoload['helper'] = array('url', 'file');
 */
-$autoload['helper'] = array('url', 'file', 'security', 'ata','rpkata');
+$autoload['helper'] = array('url', 'file', 'security', 'ata','rpkata', 'rbac_helper', 'rupiah');
 
 /*
 | -------------------------------------------------------------------

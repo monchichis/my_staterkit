@@ -1,0 +1,16 @@
+# CodeIgniter 3 GitIgnore
+/application/config/database.php
+/application/logs/*.php
+/application/cache/*
+/uploads/*
+/vendor/
+/composer.lock
+.vscode/
+.editorconfig
+.idea/
+.DS_Store
+*.log
+Thumbs.db
+!/uploads/readme.txt
+!/application/cache/index.html
+!/application/logs/index.html

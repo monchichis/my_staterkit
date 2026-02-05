@@ -1,5 +1,10 @@
 <head>
     <title><?php echo $title; ?></title>
+    <?php 
+        $identitas = $this->db->get('tbl_aplikasi')->row();
+        $favicon = isset($identitas->title_icon) && !empty($identitas->title_icon) ? base_url('assets/images/' . $identitas->title_icon) : base_url('assets/images/default-icon.png');
+    ?>
+    <link rel="shortcut icon" href="<?php echo $favicon; ?>">
 </head>
 <style>
     body {

@@ -53,7 +53,13 @@
  *
  * NOTE: If you change these, also change the error_reporting() code below
  */
-	define('ENVIRONMENT', isset($_SERVER['CI_ENV']) ? $_SERVER['CI_ENV'] : 'development');
+    // Check for env.php file
+    $env_file = dirname(__FILE__) . DIRECTORY_SEPARATOR . 'env.php';
+    if (file_exists($env_file)) {
+        define('ENVIRONMENT', trim(file_get_contents($env_file)));
+    } else {
+	    define('ENVIRONMENT', isset($_SERVER['CI_ENV']) ? $_SERVER['CI_ENV'] : 'development');
+    }
 
 /*
  *---------------------------------------------------------------
