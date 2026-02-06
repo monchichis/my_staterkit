@@ -2,7 +2,7 @@
 
 <div align="center">
 
-![Project Cover](assets/images/manual_book_cover.png)
+![Project Cover](assets/images/readme_cover.png)
 
 [![PHP Version](https://img.shields.io/badge/php-%3E%3D%205.6-777bb4.svg?style=flat-square)](https://www.php.net/)
 [![CodeIgniter](https://img.shields.io/badge/CodeIgniter-3.1.11-ef4b23.svg?style=flat-square)](https://codeigniter.com/)
